@@ -92,8 +92,8 @@ ahk_processes.append(subprocess.Popen([AHK, r".\scroll.ahk"]))
                      
 while t<20 and Pokemon2.HP>0 or t<10 and Pokemon1.HP>0:
     Wrongchoice=0
-    Pokemon1.display_HP()
-    Pokemon2.display_HP()
+    Pokemon1.display_hp()
+    Pokemon2.display_hp()
     time.sleep(2)
     if Pokemon2.HP>0:
         event = input_setup(4, "What would you like to do?(Scroll with Alt+A)\n >Attack(1)\n >Bag(2) \n >PokeBall(3) \n >Run(4) \n ")
@@ -128,17 +128,17 @@ while t<20 and Pokemon2.HP>0 or t<10 and Pokemon1.HP>0:
                 if Pokemon1.HP<max_hp-10:
                     Pokemon1.change_hp(10)
                     print("The Potion healed 10 HP")
-                    Pokemon1.display_HP()
+                    Pokemon1.display_hp()
                 elif Pokemon1.HP==max_hp:
                     print ("This item cannot be used")
                 else:
                     Pokemon1.HP=max_hp
                     print("The Potion healed ",max_hp-Pokemon1.HP, " HP")
-                    Pokemon1.display_HP()
+                    Pokemon1.display_hp()
             elif item=="2": 
                 Pokemon1.HP=max_hp
                 print("The Full Restore healed ",Pokemon1.name," to full HP")
-                Pokemon1.display_HP()
+                Pokemon1.display_hp()
             else:
                 Wrongchoice=1
         elif event=="3":
