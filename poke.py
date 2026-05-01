@@ -13,7 +13,6 @@ pokemon_moves = ["Tackle" , "Ember" , "Bubble" , "Thunder Shock" ,"Vine Whip" , 
 pokeballs = {"1":"Regular","2":"Great","3":"Ultra"}
 w1=w2=d1=d2=0
 max_hp = r.randrange(100,200,10)
-max_hp1 = max_hp
 t = lose = Wrongchoice = caughtvalue = 0 #Not Changable
 movepp = [5,5,5,5]
 
@@ -28,6 +27,52 @@ class Pokemon:
     def display_hp(self):
         print(f"{self.name} has {self.HP} HP")
 
+Pokemon1=Pokemon(r.randint(0,17))
+Pokemon2=Pokemon(r.randint(0,17))
+if Pokemon1.type_name==Pokemon2.type_name: 
+    Pokemon1.name+=" 1"
+    Pokemon2.name+=" 2"
+pokemove2=pokemon_moves[Pokemon2.type_index]
+posmoves=[(Pokemon1.type_name + i) for i in [" Spin"," Punch"," Bite"," Slam"]] #Changable
+pm3=[(" >"+posmoves[i-1]+"("+str(i)+")(PP "+str(movepp[i-1])+")\n") for i in range(1,5)]
+
+AHK = r"C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe"
+ahk_processes = []
+def stop_ahk():
+    for p in ahk_processes:
+        p.terminate()
+atexit.register(stop_ahk)
+ahk_processes.append(subprocess.Popen([AHK, r".\sendone.ahk"]))
+ahk_processes.append(subprocess.Popen([AHK, r".\scroll.ahk"]))
+
+
+def pokecapture():
+    global caughtvalue
+    print("You caught ",Pokemon2.name,"!!")
+    caughtvalue=1
+       
+def movnumwrite(n):
+    with open('movnumwrite.txt','w') as f:
+        f.write(str(n))
+        f.close()
+           
+def inpchange(n):
+    with open('input.txt','w') as f:
+        f.write(n)
+        f.close()
+           
+def reset_tracker():
+    with open('tracker.txt', 'w') as f:
+        f.write('1')
+
+def input_setup(moves, input_str):
+       movnumwrite(moves)
+       inpchange('InputAwaited')
+       reset_tracker()
+       out=input(input_str)
+       inpchange('Input Recieved')
+       return out
+       
 def check():
     global d1
     global d2
@@ -42,55 +87,11 @@ def check():
         w1=1
     if (Pokemon2.type_index,Pokemon1.type_index) in w:
         d1=2*d1
-        w2=1
-
-Pokemon1=Pokemon(r.randint(0,17))
-Pokemon2=Pokemon(r.randint(0,17))
-pokemove2=pokemon_moves[Pokemon2.type_index]
-posmoves=[(Pokemon1.type_name + i) for i in [" Spin"," Punch"," Bite"," Slam"]] #Changable
-pm3=[(" >"+posmoves[i-1]+"("+str(i)+")(PP "+str(movepp[i-1])+")\n") for i in range(1,5)]
-
-if Pokemon1.type_name==Pokemon2.type_name: 
-    Pokemon1.name+=" 1"
-    Pokemon2.name+=" 2" #Not Changable
+        w2=1        
 
 print("Your Pokemon is",Pokemon1.name)
-print ("You have encountered",Pokemon2.name)
-
-def pokecapture():
-    global caughtvalue
-    print("You caught ",Pokemon2.name,"!!")
-    caughtvalue=1
-def movnumwrite(n):
-    with open('movnumwrite.txt','w') as f:
-        f.write(str(n))
-        f.close()
-def inpchange(n):
-    with open('input.txt','w') as f:
-        f.write(n)
-        f.close()
-def reset_tracker():
-    with open('tracker.txt', 'w') as f:
-        f.write('1')
-
-def input_setup(moves, input_str):
-       movnumwrite(moves)
-       inpchange('InputAwaited')
-       reset_tracker()
-       out=input(input_str)
-       inpchange('Input Recieved')
-       return out
-AHK = r"C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe"
-ahk_processes = []
-def stop_ahk():
-    for p in ahk_processes:
-        p.terminate()
-atexit.register(stop_ahk)
-ahk_processes.append(subprocess.Popen([AHK, r".\sendone.ahk"]))
-ahk_processes.append(subprocess.Popen([AHK, r".\scroll.ahk"]))
-
-                     
-while t<20 and Pokemon2.HP>0 or t<10 and Pokemon1.HP>0:
+print ("You have encountered",Pokemon2.name)                 
+while (t<20 and Pokemon2.HP>0) or (t<10 and Pokemon1.HP>0):
     Wrongchoice=0
     Pokemon1.display_hp()
     Pokemon2.display_hp()
