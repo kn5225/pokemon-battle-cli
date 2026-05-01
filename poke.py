@@ -16,7 +16,6 @@ max_hp = r.randrange(100,200,10)
 max_hp1 = max_hp
 t = lose = Wrongchoice = caughtvalue = 0 #Not Changable
 movepp = [5,5,5,5]
-pm3=[(" >"+posmoves[i-1]+"("+str(i)+")(PP "+str(movepp[i-1])+")\n") for i in range(1,5)]
 
 class Pokemon:
     def __init__(self, type_index):
@@ -49,6 +48,7 @@ Pokemon1=Pokemon(r.randint(0,17))
 Pokemon2=Pokemon(r.randint(0,17))
 pokemove2=pokemon_moves[Pokemon2.type_index]
 posmoves=[(Pokemon1.type_name + i) for i in [" Spin"," Punch"," Bite"," Slam"]] #Changable
+pm3=[(" >"+posmoves[i-1]+"("+str(i)+")(PP "+str(movepp[i-1])+")\n") for i in range(1,5)]
 
 if Pokemon1.type_name==Pokemon2.type_name: 
     Pokemon1.name+=" 1"
