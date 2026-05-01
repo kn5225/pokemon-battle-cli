@@ -78,7 +78,6 @@ def input_setup(moves, input_str):
        inpchange('InputAwaited')
        reset_tracker()
        out=input(input_str)
-       "What would you like to do?(Scroll with Alt+A)\n >Attack(1)\n >Bag(2) \n >PokeBall(3) \n >Run(4) \n "
        inpchange('Input Recieved')
        return out
 AHK = r"C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe"
@@ -124,7 +123,7 @@ while t<20 and Pokemon2.HP>0 or t<10 and Pokemon1.HP>0:
                     Pokemon2.HP=0
                 hpdisplay(2)
         elif event=="2":
-            item = input_setup(2, ("Which item would you like to use? \n >Potion(1) \n >Full Restore(2) \n ")
+            item = input_setup(2, "Which item would you like to use? \n >Potion(1) \n >Full Restore(2) \n ")
             if item=="1":
                 if Pokemon1.HP<max_hp-10:
                     Pokemon1.change_hp(10)
