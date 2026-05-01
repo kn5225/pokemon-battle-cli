@@ -121,7 +121,7 @@ while t<20 and Pokemon2.HP>0 or t<10 and Pokemon1.HP>0:
                     Pokemon2.change_hp(-d1)
                 else:
                     Pokemon2.HP=0
-                hpdisplay(2)
+                Pokemon1.display_hp()
         elif event=="2":
             item = input_setup(2, "Which item would you like to use? \n >Potion(1) \n >Full Restore(2) \n ")
             if item=="1":
@@ -172,7 +172,7 @@ while t<20 and Pokemon2.HP>0 or t<10 and Pokemon1.HP>0:
                         print("It did",d2,"HP")
                         if w1==1:
                             print("Its super effective!!")
-                        hpdisplay(1)
+                        Pokemon1.display_hp()
                         print('\n\n')
                         if Pokemon1.HP==0:
                             lose=1
