@@ -19,7 +19,7 @@ movepp = [5,5,5,5]
 
 class Pokemon:
     def __init__(self, type_index):
-        self.name=pokemon_list[type]
+        self.name=pokemon_list[type_index]
         self.type_name=pokemon_types[type_index]
         self.HP=max_hp
         self.type_index=type_index
