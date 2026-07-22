@@ -1,4 +1,4 @@
-# Pokemon Battle CLI
+# PokeCLI
 
 A terminal-based Pokemon battle game written in Python, enhanced with AutoHotkey v2 scripts for automated input assistance.
 
@@ -6,7 +6,7 @@ A terminal-based Pokemon battle game written in Python, enhanced with AutoHotkey
 
 ## What It Does
 
-Pokemon Battle CLI simulates a turn-based Pokemon battle in the Windows Command Prompt. Two Pokemon are randomly assigned, each with a type, moves, and HP. The player chooses actions each turn — attacking, using items, throwing Pokeballs, or running.
+PokeCLI simulates a turn-based Pokemon battle in the Windows Command Prompt. Two Pokemon are randomly assigned, each with a type, moves, and HP. The player chooses actions each turn — attacking, using items, throwing Pokeballs, or running.
 
 Two AutoHotkey scripts run alongside the game to assist with input:
 
@@ -27,8 +27,8 @@ Two AutoHotkey scripts run alongside the game to assist with input:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/kn5225/pokemon-battle-cli.git
-   cd pokemon-battle-cli
+   git clone https://github.com/kn5225/pokecli.git
+   cd pokecli
    ```
 
 2. Ensure AutoHotkey v2 is installed. Note the path to its executable (e.g. `C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe`).
